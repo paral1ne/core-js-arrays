@@ -38,8 +38,15 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const maxLen = Math.max(arr1.length, arr2.length);
+  const res = [];
+  for (let i = 0; i < maxLen; i += 1) {
+    const val1 = arr1[i] || 0;
+    const val2 = arr2[i] || 0;
+    res.push(val1 + val2);
+  }
+  return res;
 }
 
 /**
@@ -170,8 +177,8 @@ function isValueEqualsIndex(arr) {
  *    insertItem([ 1, 3, 4, 5 ], 2, 1)  => [ 1, 2, 3, 4, 5 ]
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
-function insertItem(/* arr, item, index */) {
-  throw new Error('Not implemented');
+function insertItem(arr, item, index) {
+  return arr.splice(index, 0, item);
 }
 
 /**
@@ -232,7 +239,7 @@ function doubleArray(arr) {
  *    toStringList(['rock', 'paper', 'scissors']) => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-  return arr.join('');
+  return arr.join(',');
 }
 
 /**
@@ -329,8 +336,12 @@ function calculateBalance(/* arr */) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    res.push(arr.slice(i, i + chunkSize));
+  }
+  return res;
 }
 
 /**
@@ -345,8 +356,14 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const res = [];
+  let num = 1;
+  while (res.length < len) {
+    res.push(num);
+    num += 2;
+  }
+  return res;
 }
 
 /**
@@ -464,8 +481,15 @@ function getMaxItems(arr, n) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const lenMax = Math.max(arr1.length, arr2.length);
+  const res = [];
+  for (let i = 0; i < lenMax; i += 1) {
+    if (arr1.some((el) => el === arr2[i])) {
+      res.push(arr2[i]);
+    }
+  }
+  return res;
 }
 
 /**
